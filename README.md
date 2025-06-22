@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 This project aims to generate three phase separated pwm signals which can be filtered to obtain a sinusoidal waveform.
 
 This is implemented on an IGBT inverter (H-Bridge) rated for 300V DC and 25A continuous current. Although it is rated for 300V, all tests were conducted at 15V DC.
