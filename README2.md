@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project aims to generate three phase separated pwm signals which can be filtered to obtain a sinusoidal waveform.
 
 This is implemented on an IGBT inverter (H-Bridge) rated for 300V DC and 25A continuous current. Although it is rated for 300V, all tests were conducted at 15V DC.
@@ -26,3 +27,7 @@ Whenever the mcpwm timer hits hits its end and restarts (end of one pwmp_period)
 
 duty_filler task, based on the current phase and the phase_step variable, traverses the LUT and converts its values into meaningful comparator values, stored in a custom struct and sent to a queue. This task keeps on running until it fills up the queue. It also yields for other tasks using vTaskDelay to avoid Task Watchdog timeout error.
 
+=======
+# Three-Phase-inverter
+Project course: EE-299. Three phase IGBT inverter switching logic implemented by esp32 running on ESP-IDF.
+>>>>>>> 36ca970213169cb8025840a99de941ec375b8b43
