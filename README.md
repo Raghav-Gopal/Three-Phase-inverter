@@ -1,4 +1,4 @@
-**IGBT inverter control using SPWM implemented in ESP-32 using ESP-IDF (FreeRTOS)**
+## **IGBT inverter control using SPWM implemented in ESP-32 using ESP-IDF (FreeRTOS)**
 
 This project aims to generate three phase separated pwm signals which can be filtered to obtain a sinusoidal waveform.
 
