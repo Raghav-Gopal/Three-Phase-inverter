@@ -18,6 +18,8 @@ An ESP-32 was used to generate the PWM waveform at its GPIO pins. A trimmer was 
 
 The PWM was offloaded to the hardware with built in timer and comparator, called the MCPWM peripheral. The goal was to achieve uniform CPU usage, by performing any required calculations in the time interval between the PWM updates.
 
+Due to the time critical application required, esp-idf framework was chosen as it uses FreeRTOS.
+
 The main structure had the following tasks, functions, queues, ISR:
 1. Duty_filler task
 2. input_check task
