@@ -1,5 +1,13 @@
 This project aims to generate three phase separated pwm signals which can be filtered to obtain a sinusoidal waveform.
 
+The techniques explored were:
+1. Square Wave generation.
+2. Selective Harmonic elimination of 3rd harmonic of Square Wave
+3. Selective Harmonic elimination of 3rd and 5th harmonic of Square Wave
+4. Sinusoidal Pulse Width Modulation
+
+Although all of them were implemented on the inverter during testing, SPWM was decided as the final technique used due to the frequency gap in the Frequency domain between the fundamental frequency and the swtiching frequency.
+
 This is implemented on an IGBT inverter (H-Bridge) rated for 300V DC and 25A continuous current. Although it is rated for 300V, all tests were conducted at 15V DC.
 
 The IGBT inverter accepts logic through a JST connector. Using this, each individual gate of the IGBTs of the H-bridge can be turned on and off. The inverter module has the gate driver circuitry. It drives the gate to 16V when a logic high is given and to -8V when logic low is given.
