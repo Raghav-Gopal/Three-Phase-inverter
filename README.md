@@ -20,13 +20,8 @@ Working of the code:
 
 The CPU first runs the generate_SinLUT function which generates a sinusoidal lookup table of a pre-defined size. Then the tasks duty_filler, input_check and the queue duty_queue are declared. input_check is a temporal task whereas duty_filler is an event driven task.
 
-The input_check code polls the gpio pin through its ADC to get the value of the potentiometer. With this value it decides the phase_step variable. This variable is responsible for affecting the frequency, and it decides how fast should the CPU read the LUT.
+The input_check code polls the gpio pin through its ADC to get the value of the potentiometer. With this value it decides the phase_step variable. This variable is responsible for the frequency, and it decides how fast should the CPU read the LUT.
 
-Whenever the mcpwm timer hits hits its end and restarts (end of one pwmp_period) an interrupt is called which is handled by pwm_ISR. pwm_ISR pops values from the duty_queue queue and updates the value of the comparator. It is important to do it this way since FPU calculations cannot be done in ISR. It also checks the length of the duty_queue, if it is less than 1/3rd of its value, duty_filler task is called.
+Whenever the mcpwm timer reaches its end and restarts (end of one pwmp_period) an interrupt is called which is handled by pwm_ISR. pwm_ISR pops values from the duty_queue queue and updates the value of the comparator. It is important to do it this way since FPU calculations cannot be done in ISR. It also checks the length of the duty_queue, if it is less than 1/3rd of its value, duty_filler task is called.
 
-duty_filler task, based on the current phase and the phase_step variable, traverses the LUT and converts its values into meaningful comparator values, stored in a custom struct and sent to a queue. This task keeps on running until it fills up the queue. It also yields for other tasks using vTaskDelay to avoid Task Watchdog timeout error.
-
-=======
-# Three-Phase-inverter
-Project course: EE-299. Three phase IGBT inverter switching logic implemented by esp32 running on ESP-IDF.
->>>>>>> 36ca970213169cb8025840a99de941ec375b8b43
+duty_filler task, based on the current phase and the phase_step variable, traverses the LUT and converts its values into meaningful comparator values, stores it in a custom struct and sends it to the queue. This task keeps on running until it fills up the queue. It also yields for other tasks using vTaskDelay() to avoid Task Watchdog timeout error.
